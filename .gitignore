@@ -1,0 +1,3 @@
+# Vercel (configuração local e token — não versionar)
+.vercel
+.env*
