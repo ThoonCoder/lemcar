@@ -40,7 +40,7 @@
       toggle.focus();
     }
   });
-  window.matchMedia('(min-width: 1024px)').addEventListener('change', function (mq) {
+  window.matchMedia('(min-width: 1200px)').addEventListener('change', function (mq) {
     if (mq.matches) setMenu(false);
   });
 
@@ -121,55 +121,13 @@
     counters.forEach(function (el) { counterIO.observe(el); });
   }
 
-  /* ---------- 6. Galeria com lightbox ---------- */
-  var lightbox = document.getElementById('lightbox');
-  var items = Array.prototype.slice.call(document.querySelectorAll('.gallery__item'));
-  var lbImg = lightbox.querySelector('.lightbox__img');
-  var lbCaption = lightbox.querySelector('.lightbox__caption');
-  var current = 0;
-
-  function show(i) {
-    current = (i + items.length) % items.length;
-    var thumb = items[current].querySelector('img');
-    lbImg.src = items[current].getAttribute('data-full');
-    lbImg.alt = thumb.alt;
-    lbCaption.textContent = thumb.alt + ' — ' + (current + 1) + '/' + items.length;
-  }
-
-  items.forEach(function (item, i) {
-    item.addEventListener('click', function () {
-      show(i);
-      if (typeof lightbox.showModal === 'function') lightbox.showModal();
-      else window.open(item.getAttribute('data-full'), '_blank');
-    });
-  });
-
-  lightbox.querySelector('.lightbox__close').addEventListener('click', function () { lightbox.close(); });
-  lightbox.querySelector('.lightbox__prev').addEventListener('click', function () { show(current - 1); });
-  lightbox.querySelector('.lightbox__next').addEventListener('click', function () { show(current + 1); });
-  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) lightbox.close(); });
-  lightbox.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') show(current - 1);
-    if (e.key === 'ArrowRight') show(current + 1);
-  });
-  lightbox.addEventListener('close', function () { if (items[current]) items[current].focus(); });
-
-  var touchX = null;
-  lightbox.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
-  lightbox.addEventListener('touchend', function (e) {
-    if (touchX === null) return;
-    var dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
-    touchX = null;
-  });
-
-  /* ---------- 7. Destaca o dia de hoje na tabela de horário ---------- */
+  /* ---------- 6. Destaca o dia de hoje na tabela de horário ---------- */
   var today = String(new Date().getDay());
   document.querySelectorAll('.hours tr[data-days]').forEach(function (tr) {
     if (tr.getAttribute('data-days').split(',').indexOf(today) !== -1) tr.classList.add('is-today');
   });
 
-  /* ---------- 8. Ano automático no rodapé ---------- */
+  /* ---------- 7. Ano automático no rodapé ---------- */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
 })();

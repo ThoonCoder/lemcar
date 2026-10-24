@@ -93,6 +93,9 @@
           <li><a href="#avaliacoes">Avaliações</a></li>
           <li><a href="#localizacao">Localização</a></li>
         </ul>
+        <a class="nav__ig" href="https://www.instagram.com/lemcar_servicos_automotivos/" target="_blank" rel="noopener" aria-label="Instagram da LemCar (@lemcar_servicos_automotivos)">
+          <i class="ph-light ph-instagram-logo" aria-hidden="true"></i><span>@lemcar_servicos_automotivos</span>
+        </a>
         <a class="btn btn--primary nav__cta" href="https://wa.me/5511933582982?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">
           <i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i> Agendar serviço
         </a>
@@ -128,12 +131,19 @@
           <a class="btn btn--primary btn--lg" href="https://wa.me/5511933582982?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">
             <i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i> Agendar pelo WhatsApp
           </a>
-          <a class="btn btn--outline btn--lg" href="#servicos">Ver serviços</a>
+          <a class="btn btn--outline btn--lg" href="https://www.instagram.com/lemcar_servicos_automotivos/" target="_blank" rel="noopener">
+            <i class="ph-light ph-instagram-logo" aria-hidden="true"></i> Siga no Instagram
+          </a>
         </div>
 
-        <a class="hero__badge reveal" href="#avaliacoes">
-          <span class="stars" aria-hidden="true">★</span> <strong>4,9</strong> no Google <span class="hero__badge-sep">·</span> +110 avaliações
-        </a>
+        <div class="hero__badges reveal">
+          <a class="hero__badge" href="#avaliacoes">
+            <span class="stars" aria-hidden="true">★</span> <strong>4,9</strong> no Google <span class="hero__badge-sep">·</span> +110 avaliações
+          </a>
+          <a class="hero__badge" href="https://www.instagram.com/lemcar_servicos_automotivos/" target="_blank" rel="noopener">
+            <i class="ph-light ph-instagram-logo" aria-hidden="true"></i> <strong>43 mil</strong> seguidores no Instagram
+          </a>
+        </div>
       </div>
 
       <a class="hero__scroll" href="#numeros" aria-label="Rolar para baixo"><span></span></a>
@@ -152,11 +162,11 @@
           <span class="stat__value">+<span data-count="110">110</span></span>
           <span class="stat__label">Avaliações de clientes</span>
         </div>
-        <div class="stat reveal">
-          <!-- [X]: troque pelo número de anos de experiência, ex.: <span data-count="15">15</span> -->
-          <span class="stat__value"><span>[X]</span></span>
-          <span class="stat__label">Anos de experiência</span>
-        </div>
+        <a class="stat reveal" href="https://www.instagram.com/lemcar_servicos_automotivos/" target="_blank" rel="noopener">
+          <!-- número de seguidores (conferido em out/2026 — atualize de tempos em tempos) -->
+          <span class="stat__value"><span data-count="43">43</span> mil</span>
+          <span class="stat__label">Seguidores no Instagram</span>
+        </a>
         <div class="stat reveal">
           <span class="stat__value"><i class="ph-light ph-video-camera" aria-hidden="true"></i></span>
           <span class="stat__label">Diagnóstico com vídeo</span>
@@ -168,15 +178,26 @@
     <div class="speed" aria-hidden="true"><span></span><span></span></div>
 
     <!-- =========================================================
-         4. SOBRE
-         [FOTO DA OFICINA/EQUIPE]: substitua assets/img/oficina.jpg (retrato, ~1000x1250)
+         4. SOBRE (com cartão do perfil do Instagram no lugar de foto)
+         Números do perfil conferidos em out/2026 — atualize de tempos em tempos.
          ========================================================= -->
     <section class="section about" id="sobre">
       <div class="container about__grid">
-        <figure class="about__media reveal">
-          <img src="assets/img/oficina.jpg" alt="Equipe da LemCar trabalhando na oficina em Osasco" width="1000" height="1250" loading="lazy">
-          <figcaption><span>Desde o diagnóstico</span> até a entrega.</figcaption>
-        </figure>
+        <a class="ig-card reveal" href="https://www.instagram.com/lemcar_servicos_automotivos/" target="_blank" rel="noopener" aria-label="Abrir o perfil da LemCar no Instagram">
+          <div class="ig-card__top">
+            <span class="ig-card__avatar"><img src="assets/img/icon.png" alt="" width="512" height="512" loading="lazy"></span>
+            <div class="ig-card__id">
+              <span class="ig-card__handle">@lemcar_servicos_automotivos</span>
+              <span class="ig-card__name">Caio Monteiro | LEMCAR</span>
+            </div>
+          </div>
+          <ul class="ig-card__stats">
+            <li><strong>338</strong> posts</li>
+            <li><strong>43 mil</strong> seguidores</li>
+          </ul>
+          <p class="ig-card__bio">Transparência, excelência e qualidade. Diagnósticos, serviços e dicas de manutenção em vídeo.</p>
+          <span class="ig-card__btn"><i class="ph-light ph-instagram-logo" aria-hidden="true"></i> Seguir no Instagram</span>
+        </a>
 
         <div class="about__content">
           <p class="eyebrow reveal">Sobre a LemCar</p>
@@ -312,50 +333,53 @@
     </section>
 
     <!-- =========================================================
-         7. GALERIA (masonry)
-         Para trocar: substitua assets/img/galeria/foto-1.jpg ... foto-6.jpg
-         mantendo os nomes, e ajuste o "alt" de cada foto.
+         7. INSTAGRAM (no lugar da galeria de fotos)
+         Capas dos reels recentes, cada uma abre o vídeo no Instagram.
+         Para trocar: salve a capa em assets/img/instagram/reel-N.jpg (9:16)
+         e cole o link do reel no href. (O perfil está com "incorporações"
+         desativadas, por isso não usamos o player embutido do Instagram.)
          ========================================================= -->
-    <section class="section gallery" id="galeria">
+    <section class="section insta" id="instagram">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow reveal">Galeria</p>
-          <h2 class="title reveal">Por dentro da oficina.</h2>
+        <div class="insta__head">
+          <div>
+            <p class="eyebrow reveal">Instagram</p>
+            <h2 class="title reveal">A oficina por dentro, em vídeo.</h2>
+            <p class="section-lead reveal">Diagnósticos, serviços e dicas de manutenção: acompanhe o dia a dia da LemCar com mais de 43 mil seguidores.</p>
+          </div>
+          <a class="btn btn--primary reveal" href="https://www.instagram.com/lemcar_servicos_automotivos/" target="_blank" rel="noopener">
+            <i class="ph-light ph-instagram-logo" aria-hidden="true"></i> Seguir no Instagram
+          </a>
         </div>
 
-        <div class="gallery__grid">
-          <button class="gallery__item reveal" type="button" data-full="assets/img/galeria/foto-1.jpg">
-            <img src="assets/img/galeria/foto-1.jpg" alt="Carro no elevador durante diagnóstico" width="1000" height="1250" loading="lazy">
-          </button>
-          <button class="gallery__item reveal" type="button" data-full="assets/img/galeria/foto-2.jpg">
-            <img src="assets/img/galeria/foto-2.jpg" alt="Fachada da LemCar na Av. Prestes Maia" width="1200" height="800" loading="lazy">
-          </button>
-          <button class="gallery__item reveal" type="button" data-full="assets/img/galeria/foto-3.jpg">
-            <img src="assets/img/galeria/foto-3.jpg" alt="Serviço de suspensão" width="1200" height="800" loading="lazy">
-          </button>
-          <button class="gallery__item reveal" type="button" data-full="assets/img/galeria/foto-4.jpg">
-            <img src="assets/img/galeria/foto-4.jpg" alt="Troca de discos e pastilhas de freio" width="1000" height="1250" loading="lazy">
-          </button>
-          <button class="gallery__item reveal" type="button" data-full="assets/img/galeria/foto-5.jpg">
-            <img src="assets/img/galeria/foto-5.jpg" alt="Diagnóstico de injeção eletrônica com scanner" width="1200" height="800" loading="lazy">
-          </button>
-          <button class="gallery__item reveal" type="button" data-full="assets/img/galeria/foto-6.jpg">
-            <img src="assets/img/galeria/foto-6.jpg" alt="Alinhamento de direção" width="1200" height="800" loading="lazy">
-          </button>
-        </div>
+        <ul class="insta__grid">
+          <li class="reveal"><a class="reel" href="https://www.instagram.com/reel/De4UBwRyQKs/" target="_blank" rel="noopener">
+            <img src="assets/img/instagram/reel-1.jpg" alt="Reel: dicas na instalação dos freios" width="361" height="640" loading="lazy">
+            <span class="reel__play" aria-hidden="true"><i class="ph-light ph-play"></i></span>
+          </a></li>
+          <li class="reveal"><a class="reel" href="https://www.instagram.com/reel/De4PxX8SkTM/" target="_blank" rel="noopener">
+            <img src="assets/img/instagram/reel-2.jpg" alt="Reel: nunca lubrifique borrachas com derivados de petróleo" width="361" height="640" loading="lazy">
+            <span class="reel__play" aria-hidden="true"><i class="ph-light ph-play"></i></span>
+          </a></li>
+          <li class="reveal"><a class="reel" href="https://www.instagram.com/reel/De2Spa2SaOa/" target="_blank" rel="noopener">
+            <img src="assets/img/instagram/reel-3.jpg" alt="Reel: diagnóstico no cofre do motor" width="361" height="640" loading="lazy">
+            <span class="reel__play" aria-hidden="true"><i class="ph-light ph-play"></i></span>
+          </a></li>
+          <li class="reveal"><a class="reel" href="https://www.instagram.com/reel/DezGPI7SJvZ/" target="_blank" rel="noopener">
+            <img src="assets/img/instagram/reel-4.jpg" alt="Reel: você pagaria para fazer uma análise?" width="361" height="640" loading="lazy">
+            <span class="reel__play" aria-hidden="true"><i class="ph-light ph-play"></i></span>
+          </a></li>
+          <li class="reveal"><a class="reel" href="https://www.instagram.com/reel/Dej_oLryPsb/" target="_blank" rel="noopener">
+            <img src="assets/img/instagram/reel-5.jpg" alt="Reel: manutenção em dia diminui o risco de problemas maiores" width="361" height="640" loading="lazy">
+            <span class="reel__play" aria-hidden="true"><i class="ph-light ph-play"></i></span>
+          </a></li>
+          <li class="reveal"><a class="reel" href="https://www.instagram.com/reel/DejiM-Qu1v_/" target="_blank" rel="noopener">
+            <img src="assets/img/instagram/reel-6.jpg" alt="Reel: troca de óleo de câmbio automático, fazer ou não fazer?" width="361" height="640" loading="lazy">
+            <span class="reel__play" aria-hidden="true"><i class="ph-light ph-play"></i></span>
+          </a></li>
+        </ul>
       </div>
     </section>
-
-    <!-- Lightbox da galeria -->
-    <dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
-      <button class="lightbox__btn lightbox__close" type="button" aria-label="Fechar foto"><i class="ph-light ph-x" aria-hidden="true"></i></button>
-      <button class="lightbox__btn lightbox__prev" type="button" aria-label="Foto anterior"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
-      <figure class="lightbox__figure">
-        <img class="lightbox__img" src="" alt="">
-        <figcaption class="lightbox__caption"></figcaption>
-      </figure>
-      <button class="lightbox__btn lightbox__next" type="button" aria-label="Próxima foto"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
-    </dialog>
 
     <!-- =========================================================
          8. AVALIAÇÕES

@@ -268,6 +268,17 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
 .nav__list a:hover, .nav__list a[aria-current="true"] { color: var(--gray); }
 .nav__cta { align-self: flex-start; }
 
+.nav__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .95rem;
+  color: var(--gray);
+  transition: color .3s, border-color .3s;
+}
+.nav__ig i { font-size: 1.7rem; color: var(--white); }
+.nav__ig:hover { color: var(--white); }
+
 /* ---------- 6. Hero ---------- */
 .hero {
   position: relative;
@@ -318,6 +329,8 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 36px; }
 
+.hero__badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero__badge i { font-size: 1.1rem; color: var(--white); }
 .hero__badge {
   display: inline-flex;
   align-items: center;
@@ -376,35 +389,68 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
 }
 .stat__value i { font-size: 1.15em; }
 .stat__label { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); }
+a.stat { transition: background .3s; }
+a.stat:hover { background: var(--graphite-2); }
 
 .stats + .speed { margin-top: 56px; }
 
 /* ---------- 8. Sobre ---------- */
 .about__grid { display: grid; gap: 56px; align-items: center; }
 
-.about__media {
+/* cartão do perfil do Instagram (no lugar da foto) */
+.ig-card {
   position: relative;
-  clip-path: polygon(0 0, calc(100% - 48px) 0, 100% 48px, 100% 100%, 48px 100%, 0 calc(100% - 48px));
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 36px 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(225,6,0,.22), transparent 55%),
+    linear-gradient(160deg, var(--graphite-2), var(--graphite));
+  border: 1px solid var(--line);
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px));
+  overflow: hidden;
+  transition: border-color .4s;
 }
-.about__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: contrast(1.08) saturate(.9); }
-.about__media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(10,10,10,.85), transparent 45%);
+.ig-card:hover { border-color: rgba(225,6,0,.6); }
+.ig-card__top { display: flex; align-items: center; gap: 18px; }
+/* anel no estilo "stories", em vermelho */
+.ig-card__avatar {
+  flex: none;
+  width: 64px; height: 64px;
+  padding: 3px;
+  border-radius: 50%;
+  background: conic-gradient(var(--red), #ff5a4f, var(--red-dark), var(--red));
 }
-.about__media figcaption {
-  position: absolute;
-  left: 28px; right: 28px; bottom: 28px;
-  z-index: 1;
-  padding-left: 16px;
-  border-left: 2px solid var(--red);
+.ig-card__avatar img {
+  width: 100%; height: 100%;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--black);
+  border: 3px solid var(--black);
+}
+.ig-card__id { display: grid; gap: 4px; min-width: 0; }
+.ig-card__handle { font-weight: 600; font-size: .85rem; overflow-wrap: anywhere; }
+.ig-card__name { font-size: .85rem; color: var(--gray); }
+.ig-card__stats { display: flex; gap: 32px; padding-block: 18px; border-block: 1px solid var(--line); color: var(--gray); font-size: .85rem; }
+.ig-card__stats strong { display: block; font-family: var(--font-title); font-weight: 400; font-size: 1.6rem; line-height: 1.3; color: var(--white); }
+.ig-card__bio { color: #d6d6d6; font-weight: 300; }
+.ig-card__btn {
+  position: relative;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  background: var(--red);
   font-size: .78rem;
+  font-weight: 600;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--gray);
+  transition: background .3s;
 }
-.about__media figcaption span { display: block; color: var(--white); }
+.ig-card__btn i { font-size: 1.3rem; }
+.ig-card:hover .ig-card__btn { background: var(--red-dark); }
 
 .about__content > p { color: var(--gray); margin-bottom: 16px; max-width: 540px; }
 
@@ -538,68 +584,61 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
   text-transform: uppercase;
 }
 
-/* ---------- 11. Galeria (masonry) ---------- */
-.gallery { background: var(--graphite); }
+/* ---------- 11. Instagram (reels incorporados) ---------- */
+.insta { background: var(--graphite); }
 
-.gallery__grid { columns: 2; column-gap: 10px; }
+.insta__head { display: grid; gap: 28px; margin-bottom: 48px; }
+.insta__head .btn { justify-self: start; }
 
-.gallery__item {
+/* celular: carrossel horizontal com "snap"; desktop: 6 colunas */
+.insta__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 44%;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 14px;
+  margin-inline: -20px;
+  padding-inline: 20px;
+  scroll-padding-inline: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) transparent;
+}
+.insta__grid > li { scroll-snap-align: start; min-width: 0; }
+
+.reel {
   position: relative;
   display: block;
-  width: 100%;
-  margin: 0 0 10px;
-  padding: 0;
-  border: 0;
-  background: var(--graphite-2);
-  cursor: zoom-in;
+  aspect-ratio: 9 / 16;
   overflow: hidden;
-  break-inside: avoid;
+  background: var(--graphite-2);
+  border: 1px solid var(--line);
+  transition: border-color .4s;
 }
-.gallery__item img { width: 100%; transition: transform .7s var(--ease), filter .5s; filter: brightness(.85); }
-.gallery__item::after {
+.reel img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease), filter .5s; filter: brightness(.82); }
+.reel::after {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid transparent;
-  background: linear-gradient(0deg, rgba(225,6,0,.25), transparent 50%);
-  opacity: 0;
-  transition: opacity .4s, border-color .4s;
+  background: linear-gradient(0deg, rgba(10,10,10,.75), transparent 40%);
 }
-.gallery__item:hover img, .gallery__item:focus-visible img { transform: scale(1.05); filter: brightness(1); }
-.gallery__item:hover::after, .gallery__item:focus-visible::after { opacity: 1; border-color: var(--red); }
-
-/* lightbox */
-.lightbox {
-  width: 100%; max-width: 100%;
-  height: 100%; max-height: 100%;
-  margin: 0; padding: 0;
-  border: 0;
-  background: rgba(5,5,5,.96);
-  color: var(--white);
-}
-.lightbox[open] { display: grid; place-items: center; }
-.lightbox::backdrop { background: rgba(0,0,0,.8); }
-.lightbox__figure { max-width: min(92vw, 1100px); text-align: center; }
-.lightbox__img { max-height: 78vh; width: auto; margin-inline: auto; }
-.lightbox__caption { margin-top: 16px; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gray); }
-.lightbox__btn {
+.reel__play {
   position: absolute;
-  z-index: 2;
+  left: 12px; bottom: 12px;
+  z-index: 1;
   display: grid;
   place-items: center;
-  width: 48px; height: 48px;
-  background: rgba(20,20,20,.9);
-  border: 1px solid var(--line);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.7);
   color: var(--white);
-  font-size: 1.4rem;
-  cursor: pointer;
-  transition: border-color .3s, color .3s;
+  font-size: 1.1rem;
+  transition: background .3s, border-color .3s;
 }
-.lightbox__btn:hover { border-color: var(--red); color: var(--red); }
-.lightbox__close { top: 16px; right: 16px; }
-.lightbox__prev, .lightbox__next { bottom: 20px; }
-.lightbox__prev { left: calc(50% - 56px); }
-.lightbox__next { right: calc(50% - 56px); }
+.reel:hover, .reel:focus-visible { border-color: var(--red); }
+.reel:hover img, .reel:focus-visible img { transform: scale(1.05); filter: brightness(1); }
+.reel:hover .reel__play, .reel:focus-visible .reel__play { background: var(--red); border-color: var(--red); }
 
 /* ---------- 12. Avaliações ---------- */
 .reviews__head { display: grid; gap: 28px; margin-bottom: 48px; }
@@ -842,14 +881,9 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
 
   .services__grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); }
-  .gallery__grid { columns: 3; column-gap: 14px; }
-  .gallery__item { margin-bottom: 14px; }
+  .insta__grid { grid-auto-columns: 30%; margin-inline: -32px; padding-inline: 32px; scroll-padding-inline: 32px; }
   .reviews__grid { grid-template-columns: repeat(2, 1fr); }
   .footer__grid { grid-template-columns: repeat(2, 1fr); }
-
-  .lightbox__prev, .lightbox__next { top: 50%; bottom: auto; margin-top: -24px; }
-  .lightbox__prev { left: 20px; }
-  .lightbox__next { right: 20px; }
 }
 
 /* ---------- 19. Desktop (≥ 1024px) ---------- */
@@ -859,6 +893,42 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
   .section { padding-block: 128px; }
 
   .header__logo img { height: 48px; }
+
+  .hero__logo { width: 300px; margin-bottom: 48px; }
+
+  .about__grid { grid-template-columns: 5fr 6fr; gap: 96px; }
+  .ig-card { padding: 48px 44px; }
+  .ig-card__avatar { width: 84px; height: 84px; }
+  .ig-card__avatar img { padding: 14px; }
+  .ig-card__handle { font-size: .95rem; }
+
+  .services__grid { grid-template-columns: repeat(4, 1fr); }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .step--featured { top: -16px; }
+
+  .insta__head { grid-template-columns: 1fr auto; align-items: end; }
+  .insta__head .title { margin-bottom: 18px; }
+  .insta__grid {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+    overflow: visible;
+    margin-inline: 0;
+    padding: 0;
+  }
+
+  .reviews__head { grid-template-columns: 1fr auto; align-items: end; }
+  .reviews__head .title { margin-bottom: 0; max-width: 620px; }
+  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+
+  .location__grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: stretch; }
+  .location__map { min-height: 480px; }
+
+  .footer__grid { grid-template-columns: 1.6fr 1fr 1.4fr 1fr; }
+}
+
+/* ---------- 19b. Menu horizontal (≥ 1200px — abaixo disso, hambúrguer) ---------- */
+@media (min-width: 1200px) {
   .menu-toggle { display: none; }
 
   .nav {
@@ -872,7 +942,7 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
     visibility: visible;
     transition: none;
   }
-  .nav__list { display: flex; gap: 30px; }
+  .nav__list { display: flex; gap: 26px; }
   .nav__list a {
     position: relative;
     display: block;
@@ -899,23 +969,10 @@ body.menu-open .header { background: var(--black); -webkit-backdrop-filter: none
   .nav__list a:hover, .nav__list a[aria-current="true"] { color: var(--white); }
   .nav__list a:hover::after, .nav__list a[aria-current="true"]::after { transform: scaleX(1); transform-origin: left; }
   .nav__cta { min-height: 44px; padding-inline: 22px; }
-
-  .hero__logo { width: 300px; margin-bottom: 48px; }
-
-  .about__grid { grid-template-columns: 5fr 6fr; gap: 96px; }
-
-  .services__grid { grid-template-columns: repeat(4, 1fr); }
-  .steps { grid-template-columns: repeat(4, 1fr); }
-  .step--featured { top: -16px; }
-
-  .reviews__head { grid-template-columns: 1fr auto; align-items: end; }
-  .reviews__head .title { margin-bottom: 0; max-width: 620px; }
-  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
-
-  .location__grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: stretch; }
-  .location__map { min-height: 480px; }
-
-  .footer__grid { grid-template-columns: 1.6fr 1fr 1.4fr 1fr; }
+  .nav__ig { margin-right: -16px; }
+  .nav__ig span { display: none; }
+  .nav__ig i { font-size: 1.5rem; }
+  .nav__ig:hover i { color: var(--red); }
 }
 
 /* ---------- 20. Menos movimento ---------- */
